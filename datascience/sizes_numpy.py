@@ -1,17 +1,22 @@
+# Reference: https://pythonspeed.com/articles/python-integers-memory/
 # Vaniila Python objects
-from sys import getsizeof
-import numpy as np
+def main():
+    import sys
+    import numpy as np
 
-print("Using Vanilla Python int objects")
-print(f'Size of smallint: {sys.getsizeof(123)}')
-list_of_numbers = []
-for i in range(1000000):
-    list_of_numbers.append(i)
-print(f'Sizeof list of 100000 int objects: {getsizeof(list_of_numbers)}')
+    size=1000000
+    print("Using Vanilla Python int objects")
+    print(f'Size of smallint: {sys.getsizeof(123)}')
+    list_of_numbers = []
+    for i in range(size):
+        list_of_numbers.append(i)
+    print(f'Sizeof list of {size} int objects: {sys.getsizeof(list_of_numbers)}')
 
-print('Using Numpy')
-arr = np.zeros((1000000,), dtype=np.uint64)
-for i in range(1000000):
-    arr[i] = i
-print(f'Sizeof list of 100000 int objects: {getsizeof(arr)}')
+    print('Using Numpy')
+    arr = np.zeros((size,), dtype=np.uint64)
+    for i in range(size):
+        arr[i] = i
+    print(f'Sizeof list of {size} int objects: {sys.getsizeof(arr)}')
 
+if __name__=='__main__':
+    main()
